@@ -23,8 +23,11 @@
         placeholder="Password"
         type="password"
       )
-  button(@click="onConnect") Connect
-  .success-text(v-if="isClientConnected") MQTT webclient is connected!
+  .columns
+    .col-2
+      button(@click="onConnect") Connect
+    .col-6
+      .success-text(v-if="isClientConnected") MQTT webclient is connected!
 </template>
 
 <script setup>

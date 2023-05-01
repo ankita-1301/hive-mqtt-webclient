@@ -1,6 +1,7 @@
 .columns {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
 }
@@ -14,7 +15,10 @@
 
 .column.col-12,
 .column.col-6,
-.column.col-4 {
+.column.col-4,
+.column.col-3,
+.column.col-2,
+.column.col-1 {
   flex: none;
 }
 
@@ -28,4 +32,16 @@
 
 .col-4 {
   width: 33.33333333%;
+}
+
+.col-3 {
+  width: 25%;
+}
+
+.col-2 {
+  width: 16.66666667%;
+}
+
+.col-1 {
+  width: 8.33333333%;
 }
