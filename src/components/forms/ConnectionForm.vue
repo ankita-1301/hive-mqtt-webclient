@@ -40,6 +40,11 @@ function onConnect() {
 </script>
 
 <style>
+.form-title {
+  margin: 1rem 0.5rem;
+  font-weight: bold;
+}
+
 .success-text {
   color: green;
   margin: 0.5rem 0;
