@@ -1,16 +1,12 @@
 .columns {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
 }
 
 .column {
   flex: 1;
   max-width: 100%;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 0.3rem;
 }
 
 .column.col-12,
