@@ -10,12 +10,14 @@ form.form(
         v-model="data.hostName"
         name="hostname"
         placeholder="Hostname"
+        required
       )
     .column.col-6
       input#username(
         v-model="data.userName"
         name="username"
         placeholder="Username"
+        required
       )
     .column.col-6
       input#password(
@@ -23,6 +25,7 @@ form.form(
         name="password"
         type="password"
         placeholder="Password"
+        required
       )
     .column.col-12
       button(
