@@ -1,5 +1,8 @@
 <template lang="pug">
-form.form(@submit.prevent="onPublish" ref="formRef")
+form.form(
+  ref="formRef"
+  @submit.prevent="onPublish"
+)
   h2.form-title Messages
   .columns
     .column.col-6
@@ -7,18 +10,21 @@ form.form(@submit.prevent="onPublish" ref="formRef")
         v-model="data.topic"
         name="topic"
         placeholder="Topic"
-        :disabled="!isClientConnected"
         required
+        :disabled="!isClientConnected"
       )
     .column.col-6
       select#qualityOfService(
-        v-model="data.qualityOfService",
-        name="qualityOfService",
-        placeholder="Quality of service (QoS)",
-        :disabled="!isClientConnected"
+        v-model="data.qualityOfService"
+        name="qualityOfService"
+        placeholder="Quality of service (QoS)"
         required
+        :disabled="!isClientConnected"
       )
-        option(:value="0", selected=true) At most once
+        option(
+          :value="0"
+          selected
+        ) At most once
         option(:value="1") At least once
         option(:value="2") Exactly once
 
@@ -29,13 +35,13 @@ form.form(@submit.prevent="onPublish" ref="formRef")
         cols="50"
         placeholder="Message body"
         rows="4"
-        :disabled="!isClientConnected"
         required
+        :disabled="!isClientConnected"
       )
     .column.col-12
       button(
-        :disabled="disablePublishButton"
         type="submit"
+        :disabled="disablePublishButton"
       ) Publish Message
     .column.col-12
       messages(:messages="messages")
@@ -44,6 +50,11 @@ form.form(@submit.prevent="onPublish" ref="formRef")
 <script setup>
 import { ref, reactive, computed } from 'vue'
 import Messages from '@/components/common/Messages.vue'
+
+const props = defineProps({
+  isClientConnected: false,
+  messages: [],
+})
 
 const emit = defineEmits(['publish-message'])
 
@@ -55,11 +66,6 @@ const data = reactive({
 })
 
 const formRef = ref(null)
-
-const props = defineProps({
-  isClientConnected: false,
-  messages: [],
-})
 
 const isValidForm = computed(() => {
   return formRef.value.checkValidity()
