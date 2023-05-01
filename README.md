@@ -38,4 +38,4 @@ docker build -t hive-mqtt-webclient .
 docker run -it -p 8080:80 hive-mqtt-webclient
 ```
 
-You will be able to access the app via localhost:8080
+Navigate to http://localhost:8080/ to access the application
