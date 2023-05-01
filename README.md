@@ -1,5 +1,9 @@
 # hive-mqtt-webclient-project
 
+#### This application was built using VueJS version 3 with the composition API, Vite as a build tool, NPM as package manager and was containerized using Docker. Vitest was used for unit test purpose.
+
+#### Note: Required version of NodeJS is v14
+
 ## Project Setup
 
 ```sh
