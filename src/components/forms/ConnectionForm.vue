@@ -1,5 +1,8 @@
 <template lang="pug">
-form.form(@submit.prevent="onConnect" ref="formRef")
+form.form(
+  ref="formRef"
+  @submit.prevent="onConnect"
+)
   h2.form-title Connection
   .columns
     .column.col-12
@@ -18,30 +21,33 @@ form.form(@submit.prevent="onConnect" ref="formRef")
       input#password(
         v-model="data.password"
         name="password"
-        placeholder="Password"
         type="password"
+        placeholder="Password"
       )
     .column.col-12
-      button(type="submit" :disabled="disableConnectButton") Connect
+      button(
+        type="submit"
+        :disabled="disableConnectButton"
+      ) Connect
       .success-text(v-if="isClientConnected") MQTT webclient is connected!
-</template>
+  </template>
 
 <script setup>
 import { ref, reactive, computed } from 'vue'
 
-const emit = defineEmits(['create-connection'])
-
-const data = reactive({
-  hostName: ref(''),
-  userName: ref(''),
-  password: ref(''),
-})
-
-const formRef = ref(null)
-
 const props = defineProps({
   isClientConnected: false,
 })
+
+const emit = defineEmits(['create-connection'])
+
+const data = reactive({
+  hostName: '',
+  userName: '',
+  password: '',
+})
+
+const formRef = ref(null)
 
 const isValidForm = computed(() => {
   return formRef.value.checkValidity()

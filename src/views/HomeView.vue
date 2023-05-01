@@ -18,7 +18,7 @@
         :messages="data.messages"
         @publish-message="onPublishMessage"
       )
-  </template>
+</template>
 
 <script setup>
 import mqtt from 'mqtt/dist/mqtt'
@@ -55,7 +55,6 @@ async function onConnect(hostname, username, password) {
 
   data.mqttClient.on('connect', function () {
     data.isClientConnected = data.mqttClient.connected
-    createAlert('Connected!')
   })
 
   data.mqttClient.on('error', (error) => {
@@ -72,7 +71,6 @@ function onCreateSubscription(topic) {
   if (!data.topics.includes(topic.trim())) {
     data.mqttClient.subscribe(topic, function (error) {
       if (!error) {
-        createAlert('subscribed!')
         data.topics.push(topic)
       }
     })
@@ -83,7 +81,6 @@ function onPublishMessage(topic, message, qos) {
   if (data.topics.includes(topic.trim())) {
     data.mqttClient.publish(topic, message, { qos }, function (error) {
       if (!error) {
-        createAlert('Message published')
         data.messages.push({ message, topic, qos })
       }
     })

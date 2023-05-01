@@ -1,5 +1,8 @@
 <template lang="pug">
-form.form(@submit.prevent="onSubscribe" ref="formRef")
+form.form(
+  ref="formRef"
+  @submit.prevent="onSubscribe"
+)
   h2.form-title Subscriptions
   .columns
     .column.col-12
@@ -7,13 +10,13 @@ form.form(@submit.prevent="onSubscribe" ref="formRef")
         v-model="data.topicName"
         name="topic"
         placeholder="Topic name"
-        :disabled="!isClientConnected"
         required
+        :disabled="!isClientConnected"
       )
     .column.col-6
       button(
-        :disabled="disableSubscribeButton"
         type="submit"
+        :disabled="disableSubscribeButton"
       ) Subscribe
     .column.col-12
       .topics(v-for="topic in topics")
@@ -24,6 +27,11 @@ form.form(@submit.prevent="onSubscribe" ref="formRef")
 <script setup>
 import { ref, reactive, computed } from 'vue'
 
+const props = defineProps({
+  isClientConnected: false,
+  topics: [],
+})
+
 const emit = defineEmits(['create-subscription'])
 
 const formRef = ref(null)
@@ -31,11 +39,6 @@ const formRef = ref(null)
 const data = reactive({
   topicName: '',
   formRef: null,
-})
-
-const props = defineProps({
-  isClientConnected: false,
-  topics: [],
 })
 
 const isValidForm = computed(() => {
