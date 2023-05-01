@@ -18,7 +18,7 @@ const data = reactive({
   mqttClient: {},
 })
 
-function onConnect(hostname, username, password) {
+async function onConnect(hostname, username, password) {
   const clientOptions = {
     clean: true,
     clientId: uuid(),
@@ -36,26 +36,22 @@ function onConnect(hostname, username, password) {
 
   data.mqttClient = mqtt.connect(hostname, clientOptions)
 
-  console.log('Connecting mqtt client', data.mqttClient)
-
   data.mqttClient.on('connect', function () {
     data.isClientConnected = data.mqttClient.connected
-    console.log('Connected..!')
+    createAlert('Connected!')
   })
 
   data.mqttClient.on('error', (error) => {
-    console.log('Connection error: ', error)
+    createAlert('Connection error ', error)
     data.mqttClient.end()
   })
 
   data.mqttClient.on('reconnect', () => {
-    console.log('Reconnecting...')
+    createAlert('Reconnecting')
   })
 }
-</script>
 
-<style>
-h1 {
-  margin: 2rem auto;
+function createAlert(message) {
+  alert(message)
 }
-</style>
+</script>

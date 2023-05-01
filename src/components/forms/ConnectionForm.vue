@@ -18,7 +18,7 @@
     type="password"
   )
   button(@click="onConnect") Connect
-  .success(v-if="isClientConnected") MQTT webclient is connected!
+  .success-text(v-if="isClientConnected") MQTT webclient is connected!
 </template>
 
 <script setup>
@@ -40,7 +40,7 @@ function onConnect() {
 </script>
 
 <style>
-.success {
+.success-text {
   color: green;
   margin: 0.5rem 0;
   font-weight: bold;
