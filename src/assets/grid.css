@@ -1,0 +1,31 @@
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.column {
+  flex: 1;
+  max-width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.column.col-12,
+.column.col-6,
+.column.col-4 {
+  flex: none;
+}
+
+.col-12 {
+  width: 100%;
+}
+
+.col-6 {
+  width: 50%;
+}
+
+.col-4 {
+  width: 33.33333333%;
+}

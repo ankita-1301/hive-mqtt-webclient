@@ -1,0 +1,24 @@
+input,
+select,
+textarea {
+  width: 100%;
+  min-height: 2rem;
+  margin-bottom: 1rem;
+}
+
+button {
+  background-color: black;
+  color: white;
+  height: 2rem;
+  min-width: 4rem;
+}
+
+button:disabled {
+  background-color: #ddd;
+  color: gray;
+}
+
+.form-title {
+  margin: 1rem 0.5rem;
+  font-weight: bold;
+}
