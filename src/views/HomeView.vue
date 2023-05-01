@@ -1,15 +1,18 @@
 <template lang="pug">
 .home-view
   h1.page-title MQTT WebClient
-  connection-form(
-    :is-client-connected="data.isClientConnected"
-    @create-connection="onConnect"
-  )
-  subscription-form(
-    :is-client-connected="data.isClientConnected"
-    :topics="data.topics"
-    @create-subscription="onCreateSubscription"
-  )
+  .columns
+    .col-6
+      connection-form(
+        :is-client-connected="data.isClientConnected"
+        @create-connection="onConnect"
+      )
+    .col-6
+      subscription-form(
+        :is-client-connected="data.isClientConnected"
+        :topics="data.topics"
+        @create-subscription="onCreateSubscription"
+      )
   </template>
 
 <script setup>

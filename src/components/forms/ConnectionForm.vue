@@ -1,22 +1,28 @@
 <template lang="pug">
 .connection-form
   h2.form-title Connection
-  input#hostname(
-    v-model="hostName"
-    name="hostname"
-    placeholder="Hostname"
-  )
-  input#username(
-    v-model="userName"
-    name="username"
-    placeholder="Username"
-  )
-  input#password(
-    v-model="password"
-    name="password"
-    placeholder="Password"
-    type="password"
-  )
+  .columns
+    .col-6
+      input#hostname(
+        v-model="hostName"
+        name="hostname"
+        placeholder="Hostname"
+      )
+  .columns
+    .col-6
+      input#username(
+        v-model="userName"
+        name="username"
+        placeholder="Username"
+      )
+  .columns
+    .col-6
+      input#password(
+        v-model="password"
+        name="password"
+        placeholder="Password"
+        type="password"
+      )
   button(@click="onConnect") Connect
   .success-text(v-if="isClientConnected") MQTT webclient is connected!
 </template>
