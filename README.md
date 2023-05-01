@@ -24,8 +24,18 @@ npm run build
 npm run test:unit
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+## Docker
 
-```sh
-npm run lint
+### Build Image
+
 ```
+docker build -t hive-mqtt-webclient .
+```
+
+### Run
+
+```
+docker run -it -p 8080:80 hive-mqtt-webclient
+```
+
+Navigate to http://localhost:8080/ to access the application
