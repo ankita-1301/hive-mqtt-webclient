@@ -3,7 +3,7 @@
 @import './grid.css';
 
 #app {
-  max-width: 1280px;
+  max-width: 992px;
   margin: 2rem auto;
 
   font-weight: normal;
@@ -18,6 +18,11 @@ a,
 
 h2 {
   margin: 1rem auto;
+}
+
+.page-title {
+  margin: 0.5rem;
+  font-weight: bold;
 }
 
 @media (min-width: 1024px) {

@@ -2,16 +2,21 @@
 .home-view
   h1.page-title MQTT WebClient
   .columns
-    .col-6
+    .column.col-6
       connection-form(
         :is-client-connected="data.isClientConnected"
         @create-connection="onConnect"
       )
-    .col-6
       subscription-form(
         :is-client-connected="data.isClientConnected"
         :topics="data.topics"
         @create-subscription="onCreateSubscription"
+      )
+    .column.col-6
+      message-form(
+        :is-client-connected="data.isClientConnected"
+        :messages="data.messages"
+        @publish-message="onPublishMessage"
       )
   </template>
 
@@ -21,11 +26,13 @@ import { reactive } from 'vue'
 import { v4 as uuid } from 'uuid'
 import ConnectionForm from '@/components/forms/ConnectionForm.vue'
 import SubscriptionForm from '@/components/forms/SubscriptionForm.vue'
+import MessageForm from '@/components/forms/MessageForm.vue'
 
 const data = reactive({
   isClientConnected: false,
   mqttClient: {},
   topics: [],
+  messages: [],
 })
 
 async function onConnect(hostname, username, password) {
@@ -69,6 +76,19 @@ function onCreateSubscription(topic) {
         data.topics.push(topic)
       }
     })
+  }
+}
+
+function onPublishMessage(topic, message, qos) {
+  if (data.topics.includes(topic.trim())) {
+    data.mqttClient.publish(topic, message, { qos }, function (error) {
+      if (!error) {
+        createAlert('Message published')
+        data.messages.push({ message, topic, qos })
+      }
+    })
+  } else {
+    createAlert('Topic does not exist')
   }
 }
 
