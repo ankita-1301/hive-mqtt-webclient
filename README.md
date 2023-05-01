@@ -1,2 +1,31 @@
-# hive-mqtt-webclient
-An MQTT WebClient with functionalities such as connecting to a host, subscribing to a topic, and publishing and viewing messages.
+# hive-mqtt-webclient-project
+
+## Project Setup
+
+```sh
+npm install
+```
+
+### Compile and Hot-Reload for Development
+
+```sh
+npm run dev
+```
+
+### Compile and Minify for Production
+
+```sh
+npm run build
+```
+
+### Run Unit Tests with [Vitest](https://vitest.dev/)
+
+```sh
+npm run test:unit
+```
+
+### Lint with [ESLint](https://eslint.org/)
+
+```sh
+npm run lint
+```
