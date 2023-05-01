@@ -11,7 +11,7 @@
       )
     .col-6
       button(
-        :disabled="!isClientConnected"
+        :disabled="disableSubscribeButton"
         @click="onSubscribe"
       ) Subscribe
     .col-12
@@ -21,7 +21,7 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, computed } from 'vue'
 
 const emit = defineEmits(['create-subscription'])
 
@@ -29,10 +29,14 @@ const data = reactive({
   topicName: '',
 })
 
-defineProps({
+const props = defineProps({
   isClientConnected: false,
   topics: [],
 })
+
+const disableSubscribeButton = computed(
+  () => !(props.isClientConnected && data.topicName.trim() !== '')
+)
 
 function onSubscribe() {
   emit('create-subscription', data.topicName)
