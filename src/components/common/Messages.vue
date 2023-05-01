@@ -8,8 +8,8 @@
       hr
   .columns(v-for="(messageItem, index) in messages" :key="index")
     .column.col-4.message {{ messageItem.message }}
-    .column.col-4.align-center {{ messageItem.topic }}
-    .column.col-4.align-center {{ messageItem.qos }}
+    .column.col-4.message.align-center {{ messageItem.topic }}
+    .column.col-4.message.align-center {{ messageItem.qos }}
 </template>
 
 <script setup>
